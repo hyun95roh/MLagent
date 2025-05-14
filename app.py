@@ -11,11 +11,13 @@ from sklearn.metrics import r2_score
 import matplotlib.pyplot as plt
 import seaborn as sns
 from transformers import AutoTokenizer, AutoModelForCausalLM
+import os
 import torch
 
-model_name = "TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name)
+model_name = "meta-llama/Meta-Llama-3-8B"
+hf_token = os.getenv("HUGGINGFACE_TOKEN")
+tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=hf_token)
+model = AutoModelForCausalLM.from_pretrained(model_name, use_auth_token=hf_token)
 
 def llama_agent(task_description, stats_summary):
     prompt = (
