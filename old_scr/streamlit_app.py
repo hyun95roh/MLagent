@@ -1,6 +1,6 @@
 import streamlit as st
 import time 
-from proba_theory import gaussian
+from old_scr.proba_theory import gaussian
 
 # Table of Content
 st.sidebar.title('Contents:')
